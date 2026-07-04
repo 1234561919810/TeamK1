@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>TEAM K1</title>
+<link rel="icon" href="//cdn.aimware.net/asset/img/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<style>
+*{box-sizing:border-box}
+body{font-family:'Titillium Web',sans-serif;background:#0c0c0c;color:#e0e0e0;margin:0;padding:0;scroll-behavior:smooth;overflow-x:hidden}
+
+/* -------------------------- */
+/* 顶级重制 · 背景特效系统     */
+/* -------------------------- */
+/* 全屏动态烟雾（Neverlose同款） */
+.smoke-bg{
+  position:fixed;top:0;left:0;width:100%;height:100vh;
+  background:url(https://i.imgur.com/9sU3KZl.mp4);
+  background-size:cover;opacity:0.14;z-index:-3;
+  pointer-events:none;
+}
+
+/* 静态科技网格（干净、高级、不晃眼） */
+.grid-bg{
+  position:fixed;top:0;left:0;width:100%;height:100vh;
+  background-image:
+    linear-gradient(rgba(0,123,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,123,255,0.06) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:0.6;z-index:-2;
+  pointer-events:none;
+}
+
+/* 顶部科技边框线条（静态干净） */
+.ui-line{
+  position:fixed;top:10px;left:10px;right:10px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,123,255,0.3),transparent);
+  z-index:-1;pointer-events:none;
+}
+.ui-line-2{
+  position:fixed;bottom:10px;left:10px;right:10px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,123,255,0.3),transparent);
+  z-index:-1;pointer-events:none;
+}
+.ui-line-3{
+  position:fixed;top:10px;bottom:10px;left:10px;width:1px;
+  background:linear-gradient(0deg,transparent,rgba(0,123,255,0.3),transparent);
+  z-index:-1;pointer-events:none;
+}
+.ui-line-4{
+  position:fixed;top:10px;bottom:10px;right:10px;width:1px;
+  background:linear-gradient(0deg,transparent,rgba(0,123,255,0.3),transparent);
+  z-index:-1;pointer-events:none;
+}
+
+/* 柔和缓慢辉光背景（不晃眼、高级氛围） */
+.glow-bg{
+  position:fixed;top:50%;left:50%;
+  width:700px;height:700px;
+  background:radial-gradient(circle, rgba(0,123,255,0.08) 0%, transparent 60%);
+  transform:translate(-50%,-50%);
+  animation:glow 8s ease-in-out infinite alternate;
+  z-index:-2;pointer-events:none;
+  opacity:0.7;
+}
+@keyframes glow{
+  0%{transform:translate(-50%,-50%) scale(1);opacity:0.4;}
+  100%{transform:translate(-50%,-50%) scale(1.3);opacity:0.7;}
+}
+
+/* -------------------------- */
+/* 主视觉特效                 */
+/* -------------------------- */
+/* 主标题双重辉光 */
+.glitch{position:relative;color:#fff;font-weight:700}
+.glitch::before{content:'TEAM K1.';position:absolute;left:2px;top:2px;color:#007bff;opacity:0.5;filter:blur(2px);z-index:-1}
+.glitch::after{content:'TEAM K1.';position:absolute;left:0;top:0;color:#007bff;opacity:0.3;filter:blur(6px);z-index:-1}
+
+/* 流光高光条 */
+.highlight{height:2px;width:60px;background:#007bff;margin:10px 0;position:relative;overflow:hidden}
+.highlight::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff,transparent);animation:slide 2.4s infinite}
+@keyframes slide{0%{left:-100%}100%{left:100%}}
+
+/* 呼吸发光边框 */
+.border-glow{position:relative;border:1px solid #1a1a1a;transition:all 0.3s ease}
+.border-glow:hover{border-color:#007bff;box-shadow:0 0 15px rgba(0,123,255,0.25),inset 0 0 15px rgba(0,123,255,0.1)}
+.border-glow::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,123,255,0.15);opacity:0;transition:0.3s}
+.border-glow:hover::before{opacity:1}
+
+/* 动态渐入 */
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInGlow{from{opacity:0;filter:blur(5px)}to{opacity:1;filter:blur(0)}}
+
+/* 基础布局 */
+.header{background:#141414;border-bottom:1px solid #1a1a1a;position:relative;z-index:1}
+.blur{background:#141414;padding:12px 0}
+.presentation-title{font-size:28px;animation:fadeInGlow 1.2s ease}
+.contact-info{font-size:18px;line-height:1.8;color:#ccc;animation:fadeIn 1.4s ease}
+.section-container{margin:40px 0;position:relative;z-index:1}
+.section-title{font-size:26px;font-weight:600}
+.section-content{background:#141414;padding:20px;border-radius:2px;margin:20px 0}
+.blockquote{background:#141414;border-left:3px solid #007bff;padding:20px;border-radius:2px}
+.footer{background:#141414;color:#777;padding:20px 0;border-top:1px solid #1a1a1a;position:relative;z-index:1}
+.copyright{padding-top:20px;margin-top:10px;text-align:center}
+.gotop{position:fixed;bottom:20px;right:20px;background:#007bff;color:#fff;width:36px;height:36px;border-radius:2px;display:grid;place-items:center;opacity:0;animation:fadeIn 1s 1.5s forwards;z-index:99}
+h1,h2,h3{color:#f0f0f0;font-weight:600}
+a{color:#f0f0e0!important;text-decoration:none!important}
+a:hover{color:#007bff!important}
+</style>
+</head>
+<body>
+
+<!-- 全新 · 干净高级背景 -->
+<div class="smoke-bg"></div>
+<div class="grid-bg"></div>
+<div class="glow-bg"></div>
+<div class="ui-line"></div>
+<div class="ui-line-2"></div>
+<div class="ui-line-3"></div>
+<div class="ui-line-4"></div>
+
+<div id="top"></div>
+
+<header class="header">
+<div class="blur">
+<div class="container">
+<nav class="navbar" style="background:#141414!important;border:none;padding:0">
+<a class="navbar-brand" href="/" style="font-weight:700;color:#fff">TEAM K1</a>
+</nav>
+</div>
+</div>
+
+<div class="header-presentation-container">
+<div class="container">
+<div class="row h-100">
+<div class="col-lg-12 my-auto text-center">
+<div class="presentation-title">
+Enjoy your favorite matches<br>
+<strong class="glitch" style="font-size:46px">TEAM K1.</strong>
+<div class="highlight mx-auto"></div><br>
+
+<div class="contact-info">
+Мы — @Team K1<br>
+https://discord.gg/jYpYT3vR<br>
+https://t.me/teamk1vip
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<main class="row">
+<section class="col-lg-12">
+
+<div class="section-container">
+<h1 class="section-title">Latest News</h1>
+<div class="highlight"></div>
+<article class="section-base section-content border-glow">
+<h2 class="section-sub-title"><a href="https://steamcommunity.com/id/f1zHere/">f1z</a></h2>
+<i class="section-article-date">Posted on 4 July 2026 by f1z</i>
+<div class="highlight"></div>
+<div class="section-article-content">ожидаем присоединения игроков...</div>
+</article>
+<article class="section-base section-content border-glow">
+<h2 class="section-sub-title"><a href="https://steamcommunity.com/id/f1zHere/">f1z</a></h2>
+<i class="section-article-date">Posted on 21 Feb 2026 by f1z</i>
+<div class="highlight"></div>
+<div class="section-article-content">ожидаем присоединения игроков...</div>
+</article>
+</div>
+
+<div class="section-container">
+<h1 class="section-title">Team Spirit</h1>
+<div class="highlight"></div>
+<p>Unity is strength. We fight as one, play as one, and win as one. Together we stand, together we dominate.</p>
+<blockquote class="blockquote text-center border-glow">
+<p class="mb-0">Talent wins games, but teamwork and intelligence win championships.</p>
+<i class="blockquote-footer">TEAM K1</i>
+</blockquote>
+</div>
+
+</section>
+</main>
+</div>
+
+<footer class="footer">
+<div class="container">
+<div class="copyright">
+Copyright © 2025 TEAM K1. All rights reserved.<br>
+Made with ❤ for elite players.
+</div>
+</div>
+<a href="#top" class="gotop"><i class="fa fa-arrow-up"></i></a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
